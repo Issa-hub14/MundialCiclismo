@@ -27,7 +27,7 @@ public class Fondista extends Competidor{
     @Override
     public String toString() {
         return super.toString() + " | Fondista" +
-               " | Vel. Máx: " + distanciaRecorrida + " km/h";
+               " | Dist. Recorrida: " + distanciaRecorrida + " km";
     }
 
     public String obtenerDatos() {

@@ -9,14 +9,17 @@ package Modelo;
  * @author isabe
  */
 public class Equipo {
+
     private String nombre;
     private String pais;
     private Competidor[] competidores;
     private int contador;
-    
-    public Equipo(String nombre, String pais){
+
+    public Equipo(String nombre, String pais, int capacidad) {
         this.nombre = nombre;
         this.pais = pais;
+        this.competidores = new Competidor[capacidad];
+        this.contador = 0;
     }
 
     public String getNombre() {
@@ -42,17 +45,52 @@ public class Equipo {
     public void setCompetidores(Competidor[] competidores) {
         this.competidores = competidores;
     }
-    
-    public void agregarCompetidor(Competidor c){
+
+    public void agregarCompetidor(Competidor c) {
         if (contador < competidores.length) {
             competidores[contador] = c;
-            contador++;  
+            contador++;
         }
     }
-    public String obtenerDatosEquipo(){
-        return "Equipo: "+ nombre +
-                "\nPais: " + pais +
-                "\nNúmero de competidores: " + contador;
-        
+
+    public String obtenerDatosEquipo() {
+        return "Equipo: " + nombre
+                + "\nPais: " + pais
+                + "\nNúmero de competidores: " + contador;
+
     }
+
+    public String obtenerDatosEquipo(boolean mostrarCompetidores) {
+        String resultado = obtenerDatosEquipo();
+        if (mostrarCompetidores) {
+            resultado += "\nCompetidores:";
+            for (int i = 0; i < contador; i++) {
+                resultado += "\n  [" + i + "] " + competidores[i].toString();
+            }
+        }
+        return resultado;
+    }
+
+    public String obtenerDatosEquipo(String paisFiltro) {
+        String resultado = "Equipo: " + nombre + "\nCompetidores de " + paisFiltro + ":";
+        int encontrados = 0;
+        for (int i = 0; i < contador; i++) {
+            if (competidores[i].getPais().equalsIgnoreCase(paisFiltro)) {
+                resultado += "\n  [" + i + "] " + competidores[i].toString();
+                
+                for (int j = 0; j < competidores[i].getNombre().length(); j++) {
+                    if (competidores[i].getNombre().charAt(j) == '*') {
+                        resultado += " ← capitán";
+                        break;
+                    }
+                }
+                encontrados++;
+            }
+        }
+        if (encontrados == 0) {
+            resultado += "\n  No hay competidores de " + paisFiltro;
+        }
+        return resultado;
+    }
+    
 }
