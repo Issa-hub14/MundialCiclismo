@@ -10,6 +10,7 @@ package Vista;
  */
 import javax.swing.JOptionPane;
 
+
 public class VistaCompetencia {
 
     public int mostrarMenu() {
@@ -27,7 +28,7 @@ public class VistaCompetencia {
                       
                       Elige una opción:
                       """;
-        
+
         String opcion = JOptionPane.showInputDialog(menu);
         if (opcion == null) {
             return 9;
@@ -48,16 +49,19 @@ public class VistaCompetencia {
     }
 
     public int pedirEntero(String mensaje) {
-        String texto = JOptionPane.showInputDialog(mensaje);
-        if (texto == null) {
-            return -1;
-        }
-        if (!esEnteroValido(texto)) {
-            mostrarMensaje("Ingrese un número entero válido.");
-            return -1;
-        }
-        return Integer.parseInt(texto.trim());
-    }
+        String texto = "";
+        while (!esEnteroValido(texto)) {
+            texto = JOptionPane.showInputDialog(mensaje);
+            if (texto == null) {
+                return -1;
+            }
+            if (!esEnteroValido(texto.trim())) {
+                JOptionPane.showMessageDialog(null, "Ingrese un número entero válido.");
+            }
+        } 
+            return Integer.parseInt(texto.trim());
+    }    
+    
 
     public double pedirDecimal(String mensaje) {
         String texto = JOptionPane.showInputDialog(mensaje);
@@ -75,7 +79,6 @@ public class VistaCompetencia {
         JOptionPane.showMessageDialog(null, mensaje);
     }
 
-    
     private boolean esEnteroValido(String texto) {
         if (texto == null || texto.trim().isEmpty()) {
             return false;
