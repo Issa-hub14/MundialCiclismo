@@ -77,7 +77,7 @@ public class Equipo {
         for (int i = 0; i < contador; i++) {
             if (competidores[i].getPais().equalsIgnoreCase(paisFiltro)) {
                 resultado += "\n  [" + i + "] " + competidores[i].toString();
-                
+
                 for (int j = 0; j < competidores[i].getNombre().length(); j++) {
                     if (competidores[i].getNombre().charAt(j) == '*') {
                         resultado += " ← capitán";
@@ -92,5 +92,11 @@ public class Equipo {
         }
         return resultado;
     }
-    
+
+    public Competidor getCompetidor(int indice) {
+        if (indice >= 0 && indice < contador) {
+            return competidores[indice];
+        }
+        return null;
+    }
 }
