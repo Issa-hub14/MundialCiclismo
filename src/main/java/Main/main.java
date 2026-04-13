@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.mundialciclismo;
+package Main;
 
 /**
  *
  * @author isabe
  */
-public class MundialCiclismo {
+public class main {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
