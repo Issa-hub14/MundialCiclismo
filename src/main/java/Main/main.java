@@ -138,6 +138,10 @@ public class main {
                         vista.mostrarMensaje("El nombre no puede estar vacío.");
                         break;
                     }
+                    if (controlador.getContadorCompetidores(equiRanking) == 0) {
+                        vista.mostrarMensaje("El equipo no tiene competidores registrados.");
+                        break;
+                    }
                     vista.mostrarMensaje(controlador.obtenerDatosEquipo(equiRanking));
                     int indiceRanking = vista.pedirEntero("Índice del competidor:");
                     if (indiceRanking < 0) {
@@ -158,6 +162,10 @@ public class main {
                     String equiDatos = vista.pedirTexto("Nombre del equipo:");
                     if (equiDatos.isEmpty()) {
                         vista.mostrarMensaje("El nombre no puede estar vacío.");
+                        break;
+                    }
+                    if (controlador.getContadorCompetidores(equiDatos) == 0) {
+                        vista.mostrarMensaje("El equipo no tiene competidores registrados.");
                         break;
                     }
                     vista.mostrarMensaje(controlador.obtenerDatosEquipo(equiDatos));

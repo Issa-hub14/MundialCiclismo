@@ -46,6 +46,10 @@ public class Equipo {
         this.competidores = competidores;
     }
 
+    public int getContador() {
+        return contador;
+    }
+
     public void agregarCompetidor(Competidor c) {
         if (contador < competidores.length) {
             competidores[contador] = c;

@@ -133,12 +133,20 @@ public class CompetenciaControlador {
         }
         return equipo.obtenerDatosEquipo(pais);
     }
-    
+
     public String generarReporte() {
         return competencia.generarReporte();
     }
-    
+
     public int getContadorEquipos() {
         return competencia.getContador();
+    }
+
+    public int getContadorCompetidores(String nombreEquipo) {
+        Equipo equipo = competencia.buscarEquipo(nombreEquipo);
+        if (equipo == null) {
+            return 0;
+        }
+        return equipo.getContador();
     }
 }
