@@ -15,6 +15,8 @@ public class Competencia {
     
     public Competencia(String nombreEvento){
         this.nombreEvento = nombreEvento;
+        this.equipos = new Equipo[40];
+        this.contador = 0;
     }
 
     public String getNombreEvento() {
@@ -32,6 +34,10 @@ public class Competencia {
     public void setEquipos(Equipo[] equipos) {
         this.equipos = equipos;
     }
+
+    public int getContador() {
+        return contador;
+    }
     
     public void agregarEquipo(Equipo e){
         if (contador < equipos.length) {
@@ -39,7 +45,25 @@ public class Competencia {
             contador++;  
         }
     }
+    
     public String generarReporte(){
-        return equipos.toString();
+        if (contador == 0) {
+            return "No hay equipos registrados.";
+        }
+        String reporte = "=== " + nombreEvento + " ===\n";
+        reporte += "Total de equipos: " + contador + "\n\n";
+        for (int i = 0; i < contador; i++) {
+            reporte += "[" + i + "] " + equipos[i].obtenerDatosEquipo() + "\n\n";
+        }
+        return reporte;
     }
+    
+    public Equipo buscarEquipo(String nombre) {
+    for (int i = 0; i < contador; i++) {
+        if (equipos[i].getNombre().equalsIgnoreCase(nombre)) {
+            return equipos[i];
+        }
+    }
+    return null;
+}
 }
