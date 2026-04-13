@@ -10,13 +10,13 @@ package Modelo;
  */
 public class Competidor {
 
-    private String nombre;
-    private int edad;
-    private String pais;
-    private int rankingMundial;
-    private double estatura;
-    private double peso;
-    private int puntos;
+    protected String nombre;
+    protected int edad;
+    protected String pais;
+    protected int rankingMundial;
+    protected double estatura;
+    protected double peso;
+    protected int puntos;
 
     public Competidor(String nombre, int edad, String pais, int rankingMundial, double estatura, double peso) {
         this.nombre = nombre;
